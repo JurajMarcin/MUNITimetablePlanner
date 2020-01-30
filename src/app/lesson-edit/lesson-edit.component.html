@@ -1,0 +1,6 @@
+<span *ngIf="lesson.type === 'seminar'" class="priority-edit">
+  <i class="icon-btn material-icons" (click)="changePriority(-1)">keyboard_arrow_up</i>
+  <span class="priority">{{lesson.priority}}</span>
+  <i class="icon-btn material-icons" (click)="changePriority(1)">keyboard_arrow_down</i>
+</span>
+<i class="icon-btn material-icons" (click)="changeVisibility(!lesson.hidden)">visibility_{{lesson.hidden ? 'on' : 'off'}}</i>

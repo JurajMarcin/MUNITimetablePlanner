@@ -1,0 +1,19 @@
+section {
+  padding-top: 60px;
+}
+
+.priority-help {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.priority-help span {
+  display: block;
+  width: 100%;
+  height: 40px;
+  font-size: 1.125em;
+  text-align: center;
+  line-height: 40px;
+}

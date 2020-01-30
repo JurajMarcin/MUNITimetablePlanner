@@ -1,0 +1,28 @@
+<nav class="navbar navbar-dark">
+  <a routerLink="/">
+    <h1>Timetable Planner</h1>
+  </a>
+  <ul>
+    <a routerLink="basic" routerLinkActive="active" class="nav-item">
+      <li>Basic Mode</li>
+    </a>
+    <a routerLink="advanced" routerLinkActive="active" class="nav-item">
+      <li>Advanced Mode</li>
+    </a>
+  </ul>
+  <div class="spacer"></div>
+  <label class="file-input">
+    Open timetable
+    <input type="file" (change)="openTimetable($event.target.files)">
+  </label>
+  <button (click)="downloadTimetable()">Download timetable</button>
+  <label class="file-input">
+    Import IS XML
+    <input type="file" (change)="importFile($event.target.files)">
+  </label>
+  <a routerLink="help"><i class="icon-btn material-icons">help_outline</i></a>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

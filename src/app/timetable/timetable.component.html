@@ -1,0 +1,32 @@
+<button *ngIf="unsavedChanges" class="save-btn" (click)="saveTimetable()">Save changes</button>
+<table *ngIf="displayTimetable">
+  <thead>
+    <tr>
+      <td></td>
+      <th *ngFor="let hour of displayTimetable.hours">
+        {{hour.from | shortTime}} - {{hour.to | shortTime}}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let day of displayTimetable.days">
+      <tr *ngFor="let line of day.lines">
+        <th *ngIf="line.index === 0" [attr.rowSpan]="day.lines.length" class="day">{{dayNames[day.index]}}</th>
+        <td *ngFor="let slot of line.slots" [attr.colSpan]="slot.span" [ngClass]="getSlotClasses(slot.lesson)">
+          <app-lesson *ngIf="slot.lesson" [lesson]="slot.lesson"></app-lesson>
+          <app-lesson-edit *ngIf="slot.lesson" [lesson]="slot.lesson" (changed)="lessonChangedEvent()">
+          </app-lesson-edit>
+        </td>
+      </tr>
+    </ng-container>
+  </tbody>
+</table>
+<div *ngIf="timetable" class="comments">
+  <div *ngFor="let comment of timetable.comments" class="comment">
+    <h2><sup>{{comment.id}}</sup></h2>
+    <p [innerHTML]="comment.comment"></p>
+  </div>
+</div>
+<div *ngIf="!displayTimetable">
+  <h1>The timetable does not exist</h1>
+</div>

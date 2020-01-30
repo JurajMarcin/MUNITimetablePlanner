@@ -1,0 +1,197 @@
+@import './colors.scss';
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.icon-btn {
+  cursor: pointer;
+  font-size: 1.58em;
+  opacity: 1;
+  transition: opacity;
+}
+
+.icon-btn:hover {
+  opacity: 0.5;
+  transition: opacity $transition;
+}
+
+.form-input {
+  margin: 10px 0;
+}
+
+.file-input {
+  margin: 0 5px;
+  height: 40px;
+  display: block;
+  border: none;
+  background-color: $secondary;
+  color: $secondary-text;
+  font-family: inherit;
+  font-size: 1.125em;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color $transition;
+  line-height: 30px;
+}
+
+.file-input:hover {
+  background-color: $secondary-light;
+  outline: none;
+  transition: background-color $transition;
+}
+
+.file-input input {
+  display: none;
+}
+
+button {
+  margin: 0 5px;
+  height: 40px;
+  display: block;
+  border: none;
+  background-color: $secondary;
+  color: $secondary-text;
+  font-family: inherit;
+  font-size: 1.125em;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color $transition;
+}
+
+button:hover {
+  background-color: $secondary-light;
+  outline: none;
+  transition: background-color $transition;
+}
+
+button:active {
+  background-color: $secondary-dark;
+  transition: background-color $transition;
+}
+
+button:disabled {
+  background-color: #616161;
+  transition: background-color $transition;
+}
+
+input[type='file']::-webkit-file-upload-button {
+  height: 40px;
+  display: block;
+  border: none;
+  background-color: $secondary;
+  color: $secondary-text;
+  font-family: inherit;
+  font-size: 1.125em;
+  padding: 5px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color $transition;
+}
+
+input[type='file']::-webkit-file-upload-button:hover {
+  background-color: $secondary-light;
+  outline: none;
+  transition: background-color $transition;
+}
+
+input[type='file']::-webkit-file-upload-button:active {
+  background-color: $secondary-dark;
+  transition: background-color $transition;
+}
+
+
+/* SEMINAR PRIORITIES */
+
+.lecture {
+  background-color: $priority-lecture;
+}
+
+.seminar.priority-1 {
+  background-color: $priority-1;
+  color: $priority-1-bg;
+}
+
+.seminar.priority-2 {
+  background-color: $priority-2;
+  color: $priority-2-bg;
+}
+
+.seminar.priority-3 {
+  background-color: $priority-3;
+  color: $priority-3-bg;
+}
+
+.seminar.priority-4 {
+  background-color: $priority-4;
+  color: $priority-4-bg;
+}
+
+.seminar.priority-5 {
+  background-color: $priority-5;
+  color: $priority-5-bg;
+}
+
+.seminar.priority-6 {
+  background-color: $priority-6;
+  color: $priority-6-bg;
+}
+
+.seminar.priority-7 {
+  background-color: $priority-7;
+  color: $priority-7-bg;
+}
+
+.seminar.priority-8 {
+  background-color: $priority-8;
+  color: $priority-8-bg;
+}
+
+.seminar.priority-9 {
+  background-color: $priority-9;
+  color: $priority-9-bg;
+}
+
+.seminar.priority-10 {
+  background-color: $priority-10;
+  color: $priority-10-bg;
+}
+
+.seminar.priority-11 {
+  background-color: $priority-11;
+  color: $priority-11-bg;
+}
+
+.seminar.priority-12 {
+  background-color: $priority-12;
+  color: $priority-12-bg;
+}
+
+.seminar.priority-13 {
+  background-color: $priority-13;
+  color: $priority-13-bg;
+}
+
+.seminar.priority-14 {
+  background-color: $priority-14;
+  color: $priority-14-bg;
+}
+
+.seminar.priority-15 {
+  background-color: $priority-15;
+  color: $priority-15-bg;
+}
+
+.seminar.priority-16 {
+  background-color: $priority-16;
+  color: $priority-16-bg;
+}

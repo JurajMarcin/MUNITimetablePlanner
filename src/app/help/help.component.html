@@ -1,0 +1,66 @@
+<h1>Help</h1>
+<ul>
+  <li>
+    <a [routerLink]="[]" [fragment]="'import'">How to import timetable from IS?</a>
+  </li>
+  <li>
+    <a [routerLink]="[]" [fragment]="'usage'">How to use Timetable Planner?</a>
+  </li>
+</ul>
+
+<section id="import">
+  <h2>How to import timetable from IS?</h2>
+  <p>
+    1. Open your timetable: <a href="https://is.muni.cz/auth/rozvrh/zobraz/muj"
+      target="_blank">https://is.muni.cz/auth/rozvrh/zobraz/muj</a>
+  </p>
+  <p>
+    2. Select 'Display Options'
+    <br>
+  </p>
+  <img src="/assets/help/01_options.png">
+  <p>
+    3. Switch to 'Programmer' display format and check 'include teachers' names' and 'include all the seminar groups of
+    the courses displayed' and click 'Show'
+  </p>
+  <img src="/assets/help/02_output.png">
+  <p>
+    4. Save the result file and import it
+  </p>
+  <img src="/assets/help/03_save.png">
+</section>
+
+<section id="usage">
+  <h2>How to use Timetable Planner?</h2>
+  <p>
+    You can change the priority of seminars (lower the number means higher priority). Overlaping seminars are
+    ordered by priority. Lectures have the highest priority by default.
+  </p>
+  <img src="/assets/help/04_priority.png">
+  <p>
+    You can also hide lesson, you don't want to see in Basic Mode. Hidden lessons are shown in Advanced Mode only.
+  </p>
+  <img src="/assets/help/05_visibility.png">
+  <p>
+    Colour of the lesson is determined by its priority.
+  </p>
+  <div class="priority-help">
+    <span class="lecture">Lecture</span>
+    <span class="seminar priority-1">Seminar with priority 1</span>
+    <span class="seminar priority-2">Seminar with priority 2</span>
+    <span class="seminar priority-3">Seminar with priority 3</span>
+    <span class="seminar priority-4">Seminar with priority 4</span>
+    <span class="seminar priority-5">Seminar with priority 5</span>
+    <span class="seminar priority-6">Seminar with priority 6</span>
+    <span class="seminar priority-7">Seminar with priority 7</span>
+    <span class="seminar priority-8">Seminar with priority 8</span>
+    <span class="seminar priority-9">Seminar with priority 9</span>
+    <span class="seminar priority-10">Seminar with priority 10</span>
+    <span class="seminar priority-11">Seminar with priority 11</span>
+    <span class="seminar priority-12">Seminar with priority 12</span>
+    <span class="seminar priority-13">Seminar with priority 13</span>
+    <span class="seminar priority-14">Seminar with priority 14</span>
+    <span class="seminar priority-15">Seminar with priority 15</span>
+    <span class="seminar priority-16">Seminar with priority 16</span>
+  </div>
+</section>

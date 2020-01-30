@@ -1,0 +1,29 @@
+@import '../../colors.scss';
+
+.save-btn {
+  z-index: 3;
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #000000;
+}
+
+.day {
+  font-size: 1.2em;
+}
+
+table td,
+table th {
+  border: 1px solid #e0e0e0;
+  padding: 5px;
+  position: relative;
+}
+
+.hidden {
+  opacity: 0.5;
+}
