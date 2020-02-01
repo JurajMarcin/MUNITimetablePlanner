@@ -1,22 +1,24 @@
 @import '../../colors.scss';
 
 .id {
-  font-size: 1.25em;
+  font-size: 1em;
   font-weight: bold;
   display: block;
 }
 
 .name {
-  font-size: 1.125em;
+  font-size: 0.85em;
   display: block;
 }
 
 .rooms-week {
+  font-size: 0.75em;
   display: block;
   font-weight: lighter;
 }
 
 .teachers {
+  font-size: 0.75em;
   display: flex;
   flex-direction: column;
 }
