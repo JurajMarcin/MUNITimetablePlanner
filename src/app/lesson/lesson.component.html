@@ -1,6 +1,13 @@
-<span class="id">{{lesson.id}} <sup>{{lesson.commentIds | rooms}}</sup></span>
+<span class="id">
+  <a href="https://is.muni.cz/auth/predmet/{{lesson.faculty}}/{{lesson.term}}/{{lesson.course}}" target="_blank">{{lesson.id}}</a>
+  <sup>
+    <a *ngFor="let commentId of lesson.commentIds" class="commentId" [routerLink]="" [fragment]="'comment' + commentId">{{commentId}}</a>
+  </sup>
+</span>
 <span class="name">{{lesson.name}}</span>
 <span class="teachers">
-  <span class="teacher" *ngFor="let teacher of lesson.teachers">{{teacher.id}}, {{teacher.name}}</span>
+  <span class="teacher" *ngFor="let teacher of lesson.teachers">
+    <a href="https://is.muni.cz/auth/osoba/{{teacher.id}}" target="_blank">{{teacher.id}}, {{teacher.name}}</a>
+  </span>
 </span>
 <span class="rooms-week">{{lesson.rooms | rooms}} {{lesson.time.week | week}}</span>

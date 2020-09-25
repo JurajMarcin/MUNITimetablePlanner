@@ -3,4 +3,5 @@
   <span class="priority">{{lesson.priority}}</span>
   <i class="icon-btn material-icons" (click)="changePriority(1)">keyboard_arrow_down</i>
 </span>
-<i class="icon-btn material-icons" (click)="changeVisibility(!lesson.hidden)">visibility_{{lesson.hidden ? 'on' : 'off'}}</i>
+<i *ngIf="!lesson.hidden" class="icon-btn material-icons" (click)="changeVisibility(!lesson.hidden)">visibility_on</i>
+<i *ngIf="lesson.hidden" class="icon-btn material-icons" (click)="changeVisibility(!lesson.hidden)">visibility_off</i>

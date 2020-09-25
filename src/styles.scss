@@ -27,54 +27,32 @@ body {
   margin: 10px 0;
 }
 
-.file-input {
-  margin: 0 5px;
-  height: 40px;
-  display: block;
-  border: none;
-  background-color: $secondary;
-  color: $secondary-text;
-  font-family: inherit;
-  font-size: 1.125em;
-  padding: 5px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color $transition;
-  line-height: 30px;
-}
-
-.file-input:hover {
-  background-color: $secondary-light;
-  outline: none;
-  transition: background-color $transition;
-}
-
 .file-input input {
   display: none;
 }
 
-button {
+button, .file-input, input[type='file']::-webkit-file-upload-button {
   margin: 0 5px;
-  height: 40px;
+  height: 30px;
   display: block;
   border: none;
   background-color: $secondary;
   color: $secondary-text;
+  font-size: 16px;
   font-family: inherit;
-  font-size: 1.125em;
-  padding: 5px 20px;
+  padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color $transition;
 }
 
-button:hover {
+button:hover, .file-input:hover, input[type='file']::-webkit-file-upload-button:hover {
   background-color: $secondary-light;
   outline: none;
   transition: background-color $transition;
 }
 
-button:active {
+button:active, input[type='file']::-webkit-file-upload-button:active {
   background-color: $secondary-dark;
   transition: background-color $transition;
 }
@@ -84,31 +62,51 @@ button:disabled {
   transition: background-color $transition;
 }
 
-input[type='file']::-webkit-file-upload-button {
-  height: 40px;
+.checkbox {
   display: block;
-  border: none;
-  background-color: $secondary;
-  color: $secondary-text;
-  font-family: inherit;
-  font-size: 1.125em;
-  padding: 5px 20px;
-  border-radius: 5px;
+  position: relative;
+  user-select: none;
+  font-size: 16px;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 35px;
   cursor: pointer;
-  transition: background-color $transition;
 }
 
-input[type='file']::-webkit-file-upload-button:hover {
-  background-color: $secondary-light;
-  outline: none;
-  transition: background-color $transition;
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
 }
 
-input[type='file']::-webkit-file-upload-button:active {
-  background-color: $secondary-dark;
+.checkbox .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background-color: $secondary-text;
   transition: background-color $transition;
+  border: 2px solid $secondary;
+  border-radius: 5px;
 }
 
+.checkbox input:checked ~ .checkmark {
+  background-color: $secondary;
+}
+
+.checkbox .checkmark i {
+  color: $secondary-text;
+  opacity: 0;
+  transition: opacity $transition;
+}
+
+.checkbox input:checked ~ .checkmark i {
+  opacity: 1;
+  transition: opacity $transition;
+}
 
 /* SEMINAR PRIORITIES */
 

@@ -22,3 +22,16 @@
   display: flex;
   flex-direction: column;
 }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.commentId::after {
+  content: ',';
+}
+
+.commentId:last-child::after {
+  content: '';
+}

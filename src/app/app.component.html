@@ -3,14 +3,21 @@
     <h1>Timetable Planner</h1>
   </a>
   <ul>
-    <a routerLink="basic" routerLinkActive="active" class="nav-item">
-      <li>Basic Mode</li>
+    <a routerLink="timetable" routerLinkActive="active" class="nav-item">
+      <li>Timetable</li>
     </a>
-    <a routerLink="advanced" routerLinkActive="active" class="nav-item">
-      <li>Advanced Mode</li>
+    <a routerLink="help" routerLinkActive="active" class="nav-item">
+      <li>Help</li>
     </a>
   </ul>
   <div class="spacer"></div>
+  <label class="checkbox">
+    Show All
+    <input type="checkbox" (change)="showAllChanged($event.target.checked)">
+    <span class="checkmark">
+      <i class="material-icons">check</i>
+    </span>
+  </label>
   <label class="file-input">
     Open timetable
     <input type="file" (change)="openTimetable($event.target.files)">
@@ -20,7 +27,6 @@
     Import IS XML
     <input type="file" (change)="importFile($event.target.files)">
   </label>
-  <a routerLink="help"><i class="icon-btn material-icons">help_outline</i></a>
 </nav>
 
 <div class="container">

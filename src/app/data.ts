@@ -31,6 +31,9 @@ export class Lesson {
   public time?: Hour;
   public commentIds: string[];
 
+  public faculty: string;
+  public term: string;
+
   public priority?: number;
   public hidden?: boolean;
 }

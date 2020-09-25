@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DisplayTimetable, Timetable, Lesson, DisplayLine, getSpan, DisplayDay } from '../data';
 import { ApiService } from '../api.service';
+import { Router } from '@angular/router';
+import { ShowService } from '../show.service';
 
 @Component({
   selector: 'app-timetable',
@@ -18,17 +20,18 @@ export class TimetableComponent implements OnInit {
   dayNames = ['PO', 'UT', 'ST', 'ŠT', 'PI', 'SO', 'NE'];
   unsavedChanges = false;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private show: ShowService) { }
 
   ngOnInit() {
-    // this.api.getExampleXml().subscribe(xml => {
-    //   this.timetable = this.api.importISTimetable(xml);
-    //   this.initDisplayTimetable();
-    // });
+    this.showHidden = this.show.getShowAll();
     this.initTimetable(this.api.getSavedTimetable());
     this.api.imported.subscribe(timetable => {
       this.initTimetable(timetable);
       this.unsavedChanges = true;
+    });
+    this.show.changed.subscribe(showAll => {
+      this.showHidden = showAll;
+      this.initDisplayTimetable();
     });
   }
 

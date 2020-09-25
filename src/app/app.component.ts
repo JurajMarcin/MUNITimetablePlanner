@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './api.service';
+import { ShowService } from './show.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,15 @@ export class AppComponent implements OnInit {
 
   changed = false;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private show: ShowService) { }
 
   ngOnInit() {
     this.api.changed.subscribe(() => this.changed = true);
     this.api.saved.subscribe(() => this.changed = false);
+  }
+
+  showAllChanged(event: boolean) {
+    this.show.setShowAll(event);
   }
 
   openTimetable(files: FileList) {

@@ -82,7 +82,9 @@ export class ApiService {
           priority: lessonType === 'lecture' ? 0 : 16,
           rooms: [],
           teachers: [],
-          commentIds: []
+          commentIds: [],
+          faculty: lessonXml.querySelector('akce fakulta_url').innerHTML,
+          term: lessonXml.querySelector('akce obdobi_url').innerHTML
         };
         /* COMMENTS */
         let comments = '';
