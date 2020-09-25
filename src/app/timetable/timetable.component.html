@@ -10,9 +10,9 @@
   </thead>
   <tbody>
     <ng-container *ngFor="let day of displayTimetable.days">
-      <tr *ngFor="let line of day.lines">
-        <th *ngIf="line.index === 0" [attr.rowSpan]="day.lines.length" class="day">{{dayNames[day.index]}}</th>
-        <td *ngFor="let slot of line.slots" [attr.colSpan]="slot.span" [ngClass]="getSlotClasses(slot.lesson)">
+      <tr *ngFor="let line of day.lines; first as isFirst">
+        <th *ngIf="line.index === 0" [attr.rowSpan]="day.lines.length" class="day" [class.first-row]="isFirst">{{dayNames[day.index]}}</th>
+        <td *ngFor="let slot of line.slots" [attr.colSpan]="slot.span" [ngClass]="getSlotClasses(slot.lesson)" [class.first-row]="isFirst">
           <app-lesson *ngIf="slot.lesson" [lesson]="slot.lesson"></app-lesson>
           <app-lesson-edit *ngIf="slot.lesson" [lesson]="slot.lesson" (changed)="lessonChangedEvent()">
           </app-lesson-edit>
