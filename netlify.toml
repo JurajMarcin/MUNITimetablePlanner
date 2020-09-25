@@ -1,9 +1,9 @@
+[build]
+  base = "/"
+  publish = "dist/MUNITimetablePlanner"
+  command = "ng build --prod"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[[build]]
-  base = "/"
-  publish = "dist/MUNITimetablePlanner"
-  command = "ng build --prod"
