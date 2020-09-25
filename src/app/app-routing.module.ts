@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TimetableComponent } from './timetable/timetable.component';
+import { CoursesComponent } from './courses/courses.component';
 import { HelpComponent } from './help/help.component';
+import { TimetableComponent } from './timetable/timetable.component';
 
 
 const routes: Routes = [
   { path: 'timetable', component: TimetableComponent },
+  { path: 'courses', component: CoursesComponent},
   { path: 'help', component: HelpComponent },
   { path: '**', redirectTo: 'timetable' }
 ];

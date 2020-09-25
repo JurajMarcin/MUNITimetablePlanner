@@ -1,0 +1,12 @@
+<div *ngIf="courses" class="courses">
+    <div *ngFor="let course of keys(courses)" class="course">
+        <div *ngFor="let lesson of courses[course]" class="lesson" [ngClass]="getSlotClasses(lesson)">
+            <app-lesson *ngIf="lesson" [lesson]="lesson"></app-lesson>
+            <app-lesson-edit *ngIf="lesson" [lesson]="lesson" class="visible"></app-lesson-edit>
+        </div>
+    </div>
+</div>
+<div *ngIf="!courses">
+    <h1>The timetable does not exist</h1>
+</div>
+<app-comments [timetable]="timetable"></app-comments>

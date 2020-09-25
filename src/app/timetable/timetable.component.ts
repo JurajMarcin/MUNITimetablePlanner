@@ -18,25 +18,22 @@ export class TimetableComponent implements OnInit {
   timetable: Timetable;
 
   dayNames = ['PO', 'UT', 'ST', 'ŠT', 'PI', 'SO', 'NE'];
-  unsavedChanges = false;
 
   constructor(private api: ApiService, private show: ShowService) { }
 
   ngOnInit() {
     this.showHidden = this.show.getShowAll();
-    this.initTimetable(this.api.getSavedTimetable());
-    this.api.imported.subscribe(timetable => {
-      this.initTimetable(timetable);
-      this.unsavedChanges = true;
-    });
+    this.initTimetable();
+    this.api.loaded.subscribe(() => this.initTimetable());
+    this.api.saved.subscribe(() => this.initDisplayTimetable());
     this.show.changed.subscribe(showAll => {
       this.showHidden = showAll;
       this.initDisplayTimetable();
     });
   }
 
-  initTimetable(timetable: Timetable) {
-    this.timetable = timetable;
+  initTimetable() {
+    this.timetable = this.api.getTimetable();
     this.initDisplayTimetable();
   }
 
@@ -101,15 +98,5 @@ export class TimetableComponent implements OnInit {
 
   getSlotClasses(lesson: Lesson) {
     return lesson ? [lesson.type, 'priority-' + lesson.priority, lesson.hidden ? 'hidden' : 'shown'] : ['break'];
-  }
-
-  lessonChangedEvent() {
-    this.unsavedChanges = true;
-  }
-
-  saveTimetable() {
-    this.api.saveTimetable(this.timetable);
-    this.initDisplayTimetable();
-    this.unsavedChanges = false;
   }
 }

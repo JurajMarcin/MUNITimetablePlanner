@@ -1,0 +1,6 @@
+<div *ngIf="timetable" class="comments">
+  <div *ngFor="let comment of timetable.comments" class="comment" id="comment{{comment.id}}">
+    <h2><sup>{{comment.id}}</sup></h2>
+    <p [innerHTML]="comment.comment"></p>
+  </div>
+</div>

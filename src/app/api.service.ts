@@ -1,22 +1,23 @@
 // tslint:disable: prefer-for-of
 import { Injectable, EventEmitter } from '@angular/core';
-import { Timetable, Lesson, Day, getTime, getDay, getRandomInt } from './data';
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-
+import { Timetable, Lesson, getTime, getDay } from './data';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  public imported = new EventEmitter<Timetable>();
+  private timetable: Timetable = null;
+
+  public loaded = new EventEmitter();
   public changed = new EventEmitter();
   public saved = new EventEmitter();
 
-  constructor(private http: HttpClient) { }
+  constructor() {
+    this.loadTimetable();
+  }
 
-  public downloadSavedTimetable() {
-    const myBlob = new Blob([window.localStorage.getItem('timetable')], {type: 'application/json'});
+  public downloadTimetable() {
+    const myBlob = new Blob([JSON.stringify(this.timetable)], { type: 'application/json' });
     const a = document.createElement('a');
     a.download = 'timetable.json';
     a.href = URL.createObjectURL(myBlob);
@@ -24,7 +25,23 @@ export class ApiService {
     a.parentElement.removeChild(a);
   }
 
-  public openTimetable(json: string): Timetable {
+  public getTimetable(): Timetable {
+    return this.timetable;
+  }
+
+  public loadTimetable() {
+    const timetableData = window.localStorage.getItem('timetable');
+    if (timetableData) {
+      this.openTimetable(timetableData);
+    }
+  }
+
+  public saveTimetable() {
+    window.localStorage.setItem('timetable', JSON.stringify(this.timetable));
+    this.saved.emit();
+  }
+
+  public openTimetable(json: string) {
     const timetable: Timetable = JSON.parse(json);
     for (const hour of timetable.hours) {
       hour.from = new Date(hour.from);
@@ -34,26 +51,15 @@ export class ApiService {
       lesson.time.from = new Date(lesson.time.from);
       lesson.time.to = new Date(lesson.time.to);
     }
-    return timetable;
-  }
-
-  public getSavedTimetable(): Timetable {
-    const timetableData = window.localStorage.getItem('timetable');
-    if (timetableData) {
-      return this.openTimetable(timetableData);
+    if (timetable) {
+      this.timetable = timetable;
+      this.loaded.emit();
+    } else {
+      throw new Error('Could not open the timetable!');
     }
-    return null;
   }
 
-  public saveTimetable(timetable: Timetable) {
-    window.localStorage.setItem('timetable', JSON.stringify(timetable));
-  }
-
-  public getExampleXml(): Observable<string> {
-    return this.http.get('/assets/rozvrh.xml', { responseType: 'text' });
-  }
-
-  public importISTimetable(xml: string): Timetable {
+  public importISTimetable(xml: string) {
     const parser = new DOMParser();
     const timetableDoc = parser.parseFromString(xml, 'text/xml');
     const timetable: Timetable = { hours: [], lessons: [], comments: [] };
@@ -118,6 +124,12 @@ export class ApiService {
         timetable.lessons.push(lesson);
       });
     });
-    return timetable;
+    if (timetable) {
+      this.timetable = timetable;
+      this.loaded.emit();
+      this.changed.emit();
+    } else {
+      throw new Error('Could not import the timetable!');
+    }
   }
 }

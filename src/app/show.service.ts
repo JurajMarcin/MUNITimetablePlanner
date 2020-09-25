@@ -8,10 +8,16 @@ export class ShowService {
   private showAll = false;
   public changed = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor() {
+    const showAll = window.localStorage.getItem('showAll');
+    if (showAll != null) {
+      this.setShowAll(showAll === 'true');
+    }
+  }
 
   public setShowAll(state: boolean) {
     this.showAll = state;
+    window.localStorage.setItem('showAll', String(state));
     this.changed.emit(state);
   }
 

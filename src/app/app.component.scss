@@ -66,3 +66,17 @@ nav a:active {
   color: inherit;
   text-decoration: none;
 }
+
+.save-btn {
+  z-index: 3;
+  position: fixed;
+  bottom: 40px;
+  right: 5px;
+}
+
+.discard-btn {
+  z-index: 3;
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+}

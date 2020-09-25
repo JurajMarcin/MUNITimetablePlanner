@@ -8,15 +8,16 @@
   top: 0;
   right: 0;
   height: 100%;
+  width: 60px;
   color: #000000;
   display: flex;
   align-items: center;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   user-select: none;
 }
 
-:host:hover {
+:host:hover, :host.visible {
   opacity: 1;
   transition: opacity $transition;
 }

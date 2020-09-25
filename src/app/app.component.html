@@ -1,3 +1,6 @@
+<button *ngIf="changed" class="save-btn" (click)="changesSave()">Save changes</button>
+<button *ngIf="changed" class="discard-btn" (click)="changesDiscard()">Discard changes</button>
+
 <nav class="navbar navbar-dark">
   <a routerLink="/">
     <h1>Timetable Planner</h1>
@@ -6,6 +9,9 @@
     <a routerLink="timetable" routerLinkActive="active" class="nav-item">
       <li>Timetable</li>
     </a>
+    <a routerLink="courses" routerLinkActive="active" class="nav-item">
+      <li>Courses</li>
+    </a>
     <a routerLink="help" routerLinkActive="active" class="nav-item">
       <li>Help</li>
     </a>
@@ -13,7 +19,7 @@
   <div class="spacer"></div>
   <label class="checkbox">
     Show All
-    <input type="checkbox" (change)="showAllChanged($event.target.checked)">
+    <input type="checkbox" (change)="showAllChanged($event.target.checked)" [checked]="showAll">
     <span class="checkmark">
       <i class="material-icons">check</i>
     </span>

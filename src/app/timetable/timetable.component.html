@@ -1,4 +1,3 @@
-<button *ngIf="unsavedChanges" class="save-btn" (click)="saveTimetable()">Save changes</button>
 <table *ngIf="displayTimetable">
   <thead>
     <tr>
@@ -14,19 +13,14 @@
         <th *ngIf="line.index === 0" [attr.rowSpan]="day.lines.length" class="day" [class.first-row]="isFirst">{{dayNames[day.index]}}</th>
         <td *ngFor="let slot of line.slots" [attr.colSpan]="slot.span" [ngClass]="getSlotClasses(slot.lesson)" [class.first-row]="isFirst">
           <app-lesson *ngIf="slot.lesson" [lesson]="slot.lesson"></app-lesson>
-          <app-lesson-edit *ngIf="slot.lesson" [lesson]="slot.lesson" (changed)="lessonChangedEvent()">
+          <app-lesson-edit *ngIf="slot.lesson" [lesson]="slot.lesson">
           </app-lesson-edit>
         </td>
       </tr>
     </ng-container>
   </tbody>
 </table>
-<div *ngIf="timetable" class="comments">
-  <div *ngFor="let comment of timetable.comments" class="comment" id="comment{{comment.id}}">
-    <h2><sup>{{comment.id}}</sup></h2>
-    <p [innerHTML]="comment.comment"></p>
-  </div>
-</div>
+<app-comments [timetable]="timetable"></app-comments>
 <div *ngIf="!displayTimetable">
   <h1>The timetable does not exist</h1>
 </div>

@@ -1,0 +1,15 @@
+.courses {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.course {
+    margin: 5px 0;
+}
+
+.lesson {
+    padding: 5px;
+    padding-right: 60px;
+    position: relative;
+}

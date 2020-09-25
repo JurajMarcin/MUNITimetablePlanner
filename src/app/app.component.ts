@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from './api.service';
 import { ShowService } from './show.service';
 
@@ -10,48 +10,47 @@ import { ShowService } from './show.service';
 export class AppComponent implements OnInit {
 
   changed = false;
+  showAll = false;
 
-  constructor(private api: ApiService, private show: ShowService) { }
+  constructor(private api: ApiService, public show: ShowService) { }
 
   ngOnInit() {
+    this.showAll =  this.show.getShowAll();
+    this.show.changed.subscribe(state => this.showAll = state);
     this.api.changed.subscribe(() => this.changed = true);
     this.api.saved.subscribe(() => this.changed = false);
+    this.api.loaded.subscribe(() => this.changed = false);
   }
 
   showAllChanged(event: boolean) {
     this.show.setShowAll(event);
   }
 
-  openTimetable(files: FileList) {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const timetable = this.api.openTimetable(reader.result.toString());
-      if (timetable) {
-        this.api.imported.emit(timetable);
-      } else {
-        alert('Open error');
-      }
-    };
-    reader.readAsText(files[0]);
+  changesSave() {
+    this.api.saveTimetable();
+  }
+
+  changesDiscard() {
+    this.api.loadTimetable();
   }
 
   downloadTimetable() {
-    if (this.changed) {
-      alert('Save changes first');
-      return;
-    }
-    this.api.downloadSavedTimetable();
+    this.api.downloadTimetable();
+  }
+
+  openTimetable(files: FileList) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.api.openTimetable(reader.result.toString());
+      this.api.changed.emit();
+    };
+    reader.readAsText(files[0]);
   }
 
   importFile(files: FileList) {
     const reader = new FileReader();
     reader.onload = () => {
-      const timetable = this.api.importISTimetable(reader.result.toString());
-      if (timetable) {
-        this.api.imported.emit(timetable);
-      } else {
-        alert('Import error');
-      }
+      this.api.importISTimetable(reader.result.toString());
     };
     reader.readAsText(files[0]);
   }

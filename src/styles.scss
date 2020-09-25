@@ -193,3 +193,7 @@ button:disabled {
   background-color: $priority-16;
   color: $priority-16-bg;
 }
+
+.seminar.hidden {
+  opacity: 0.5;
+}
