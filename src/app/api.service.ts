@@ -49,6 +49,14 @@ export class ApiService {
     window.localStorage.setItem('timetable', JSON.stringify(timetable));
   }
 
+  public getCompactMode(): boolean {
+    return window.localStorage.getItem('compact-mode') === 'on';
+  }
+
+  public setCompactMode(value: boolean) {
+    window.localStorage.setItem('compact-mode', value ? 'on' : 'off');
+  }
+
   public getExampleXml(): Observable<string> {
     return this.http.get('/assets/rozvrh.xml', { responseType: 'text' });
   }

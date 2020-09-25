@@ -17,6 +17,7 @@ export class TimetableComponent implements OnInit {
 
   dayNames = ['PO', 'UT', 'ST', 'ŠT', 'PI', 'SO', 'NE'];
   unsavedChanges = false;
+  compactMode = false;
 
   constructor(private api: ApiService) { }
 
@@ -25,6 +26,7 @@ export class TimetableComponent implements OnInit {
     //   this.timetable = this.api.importISTimetable(xml);
     //   this.initDisplayTimetable();
     // });
+    this.compactMode = this.api.getCompactMode();
     this.initTimetable(this.api.getSavedTimetable());
     this.api.imported.subscribe(timetable => {
       this.initTimetable(timetable);
@@ -108,5 +110,21 @@ export class TimetableComponent implements OnInit {
     this.api.saveTimetable(this.timetable);
     this.initDisplayTimetable();
     this.unsavedChanges = false;
+  }
+
+  getComment(commentId: string): string {
+    const comment = this.timetable.comments.find(c => c.id === commentId);
+    return comment ? comment.comment : undefined;
+  }
+
+  toggleHiddenLessons(showHidden: boolean) {
+    this.saveTimetable();
+    this.showHidden = showHidden;
+    this.initDisplayTimetable();
+  }
+
+  toggleCompactMode() {
+    this.compactMode = !this.compactMode;
+    this.api.setCompactMode(this.compactMode);
   }
 }

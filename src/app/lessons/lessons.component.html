@@ -1,0 +1,18 @@
+<h1>Edit lessons</h1>
+<div class="courses">
+  <div *ngFor="let course of courses" class="course">
+    <div class="course-header">
+      <h3>{{course.id}}</h3>
+      <div class="course-actions">
+        <i class="icon-btn material-icons">edit</i>
+        <i class="icon-btn material-icons">delete</i>
+      </div>
+    </div>
+    <div class="lessons">
+      <div *ngFor="let lesson of course.lessons" [ngClass]="getLessonClasses(lesson)">
+        <app-lesson [lesson]="lesson"></app-lesson>
+        <app-lesson-edit [lesson]="lesson"></app-lesson-edit>
+      </div>
+    </div>
+  </div>
+</div>

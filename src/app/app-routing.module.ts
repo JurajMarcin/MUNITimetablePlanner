@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { TimetableComponent } from './timetable/timetable.component';
-import { TimetableEditComponent } from './timetable-edit/timetable-edit.component';
 import { HelpComponent } from './help/help.component';
+import { LessonsComponent } from './lessons/lessons.component';
 
 
 const routes: Routes = [
-  { path: 'basic', component: TimetableComponent },
-  { path: 'advanced', component: TimetableEditComponent },
+  { path: 'timetable', component: TimetableComponent },
+  { path: 'lessons', component: LessonsComponent },
   { path: 'help', component: HelpComponent },
-  { path: '**', redirectTo: 'basic' }
+  { path: '**', redirectTo: 'timetable' }
 ];
 
 @NgModule({

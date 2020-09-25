@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Lesson } from '../data';
 
 @Component({
@@ -10,6 +10,8 @@ export class LessonComponent {
 
   @Input()
   public lesson: Lesson;
+  @Input()
+  public compactMode = false;
 
   constructor() { }
 }

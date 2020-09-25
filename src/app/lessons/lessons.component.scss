@@ -1,0 +1,20 @@
+.courses {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.course {
+  width: 15%;
+  margin: 10px;
+}
+
+.lessons {
+  display: flex;
+  flex-direction: column;
+}
+
+.lesson {
+  padding: 5px;
+  position: relative;
+}

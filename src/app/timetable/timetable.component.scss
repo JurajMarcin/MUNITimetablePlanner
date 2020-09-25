@@ -7,6 +7,18 @@
   right: 5px;
 }
 
+.settings {
+  display: flex;
+  padding: 10px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.settings label {
+  margin-left: 10px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -24,6 +36,47 @@ table th {
   position: relative;
 }
 
-.hidden {
+td .comment {
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  padding: 0 5px;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  transition: opacity $transition;
+  z-index: -1;
+  font-size: 0.75em;
+}
+
+td .comment p {
+  margin: 5px 0;
+}
+
+td .comment .comment-id {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+td:hover .comment {
+  z-index: 2;
+  opacity: 1;
+  transition: opacity $transition;
+}
+
+.hidden-overlay {
+  position: absolute;
+  background-color: #ffffff;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity $transition;
+}
+
+.hidden .hidden-overlay {
   opacity: 0.5;
+  transition: opacity $transition;
 }

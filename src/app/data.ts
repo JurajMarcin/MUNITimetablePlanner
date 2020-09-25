@@ -1,8 +1,4 @@
-export class Timetable {
-  public hours: Hour[];
-  public lessons: Lesson[];
-  public comments: {id: string, comment: string}[];
-}
+/* TIME */
 
 export class Hour {
   public week?: 'both' | 'odd' | 'even' = 'both';
@@ -21,6 +17,14 @@ export enum Day {
   SUNDAY = 6
 }
 
+/* TIMETABLE DATA */
+
+export class Timetable {
+  public hours: Hour[];
+  public lessons: Lesson[];
+  public comments: { id: string, comment: string }[];
+}
+
 export class Lesson {
   public id: string;
   public course: string;
@@ -34,6 +38,8 @@ export class Lesson {
   public priority?: number;
   public hidden?: boolean;
 }
+
+/* TIMETABLE DISPLAY */
 
 export class DisplayTimetable {
   public hours: Hour[];
@@ -55,6 +61,15 @@ export class Slot {
   public start: number;
   public span: number;
 }
+
+/* EDITOR */
+
+export class Course {
+  public id: string;
+  public lessons: Lesson[];
+}
+
+/* MISC FUNCTIONS */
 
 export const getSpan = (lesson: Lesson): number => {
   const end = Math.round((lesson.time.to.getUTCHours() * 60 + lesson.time.to.getUTCMinutes()) / 60);

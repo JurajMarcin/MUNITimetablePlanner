@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Lesson } from '../data';
 
 @Component({
@@ -16,11 +16,14 @@ export class LessonEditComponent {
   constructor() { }
 
   changePriority(value: number) {
-    const newPriority = this.lesson.priority + value;
-    if (newPriority > 0 && newPriority < 17) {
-      this.lesson.priority = newPriority;
-      this.changed.emit();
+    let newPriority = this.lesson.priority + value;
+    if (newPriority > 16) {
+      newPriority = 1;
+    } else if (newPriority < 1) {
+      newPriority = 16;
     }
+    this.lesson.priority = newPriority;
+    this.changed.emit();
   }
 
   changeVisibility(hidden: boolean) {

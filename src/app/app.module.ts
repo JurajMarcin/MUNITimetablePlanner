@@ -11,8 +11,8 @@ import { LessonComponent } from './lesson/lesson.component';
 import { LessonEditComponent } from './lesson-edit/lesson-edit.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { WeekPipe } from './week.pipe';
-import { TimetableEditComponent } from './timetable-edit/timetable-edit.component';
 import { HelpComponent } from './help/help.component';
+import { LessonsComponent } from './lessons/lessons.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,8 @@ import { HelpComponent } from './help/help.component';
     LessonEditComponent,
     TimetableComponent,
     WeekPipe,
-    TimetableEditComponent,
-    HelpComponent
+    HelpComponent,
+    LessonsComponent
   ],
   imports: [
     BrowserModule,

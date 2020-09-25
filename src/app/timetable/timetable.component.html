@@ -1,4 +1,16 @@
 <button *ngIf="unsavedChanges" class="save-btn" (click)="saveTimetable()">Save changes</button>
+<div *ngIf="timetable" class="settings">
+  <label class="check-input">
+    <input type="checkbox" (change)="toggleHiddenLessons($event.target.checked)">
+    <span class="checkmark"></span>
+    Show hidden lessons
+  </label>
+  <label class="check-input">
+    <input type="checkbox" [checked]="compactMode" (change)="toggleCompactMode()">
+    <span class="checkmark"></span>
+    Compact mode
+  </label>
+</div>
 <table *ngIf="displayTimetable">
   <thead>
     <tr>
@@ -13,9 +25,17 @@
       <tr *ngFor="let line of day.lines">
         <th *ngIf="line.index === 0" [attr.rowSpan]="day.lines.length" class="day">{{dayNames[day.index]}}</th>
         <td *ngFor="let slot of line.slots" [attr.colSpan]="slot.span" [ngClass]="getSlotClasses(slot.lesson)">
-          <app-lesson *ngIf="slot.lesson" [lesson]="slot.lesson"></app-lesson>
+          <app-lesson *ngIf="slot.lesson" [lesson]="slot.lesson" [compactMode]="compactMode"></app-lesson>
+          <div class="hidden-overlay"></div>
           <app-lesson-edit *ngIf="slot.lesson" [lesson]="slot.lesson" (changed)="lessonChangedEvent()">
           </app-lesson-edit>
+          <div *ngIf="slot.lesson && (slot.lesson.commentIds.length || compactMode)" class="comment">
+            <app-lesson *ngIf="compactMode" [lesson]="slot.lesson"></app-lesson>
+            <p *ngFor="let commentId of slot.lesson.commentIds">
+              <span class="comment-id">{{commentId}}</span>
+              <span [innerHTML]="getComment(commentId)"></span>
+            </p>
+          </div>
         </td>
       </tr>
     </ng-container>
