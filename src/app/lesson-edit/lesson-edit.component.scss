@@ -8,7 +8,7 @@
   top: 0;
   right: 0;
   height: 100%;
-  width: 60px;
+  width: 100%;
   color: #000000;
   display: flex;
   align-items: center;
@@ -20,6 +20,22 @@
 :host:hover, :host.visible {
   opacity: 1;
   transition: opacity $transition;
+}
+
+.priority {
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  text-align: center;
+  width: 32px;
+}
+
+.priority:focus {
+  display: inline;
+  outline: none;
+  text-shadow: 0 0 5px $secondary;
 }
 
 .priority-edit {

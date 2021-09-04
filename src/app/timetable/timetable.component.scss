@@ -20,3 +20,8 @@ table th {
   padding: 5px;
   position: relative;
 }
+
+.courses-filter {
+  user-select: none;
+  cursor: pointer;
+}

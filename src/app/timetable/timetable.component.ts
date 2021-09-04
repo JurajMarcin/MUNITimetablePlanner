@@ -16,6 +16,10 @@ export class TimetableComponent implements OnInit {
 
   displayTimetable: DisplayTimetable;
   timetable: Timetable;
+  public courses: { [course: string]: boolean } = {};
+  public get coursesKeys() : string[] {
+    return Object.keys(this.courses);
+  }
 
   dayNames = ['PO', 'UT', 'ST', 'ŠT', 'PI', 'SO', 'NE'];
 
@@ -34,6 +38,9 @@ export class TimetableComponent implements OnInit {
 
   initTimetable() {
     this.timetable = this.api.getTimetable();
+    new Set(this.timetable.lessons.map(lesson => lesson.course)).forEach(course => {
+      this.courses[course] = true;
+    })
     this.initDisplayTimetable();
   }
 
@@ -43,7 +50,7 @@ export class TimetableComponent implements OnInit {
     this.clearDisplayTimetable(this.timetable.hours.length);
     this.displayTimetable.hours = this.timetable.hours;
     this.timetable.lessons.sort((a, b) => a.priority - b.priority).forEach(lesson => {
-      if (lesson.hidden && !this.showHidden) { return; }
+      if (lesson.hidden && !this.showHidden || !this.courses[lesson.course]) { return; }
       const day = lesson.time.day;
       let inserted = false;
       for (const line of this.displayTimetable.days[day].lines) {

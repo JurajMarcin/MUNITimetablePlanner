@@ -7,12 +7,32 @@ import { Lesson } from '../data';
   templateUrl: './lesson-edit.component.html',
   styleUrls: ['./lesson-edit.component.scss']
 })
-export class LessonEditComponent {
+export class LessonEditComponent implements OnInit {
 
   @Input()
   public lesson: Lesson;
 
+  public priority: number = 0;
+
   constructor(private api: ApiService) { }
+
+  ngOnInit() {
+    this.priority = this.lesson.priority;
+  }
+
+  onChange(x) {
+    console.log(x);
+  }
+
+  setPriority(value: number) {
+    if (value > 0 && value < 17) {
+      this.lesson.priority = value;
+      this.api.changed.emit();
+    } else {
+      alert('Priority has to be between 1 and 16');
+      this.priority = this.lesson.priority;
+    }
+  }
 
   changePriority(value: number) {
     const newPriority = this.lesson.priority + value;

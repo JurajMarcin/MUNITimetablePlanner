@@ -1,3 +1,9 @@
+<div>
+  <label *ngFor="let course of coursesKeys" class="courses-filter">
+    <input type="checkbox" [(ngModel)]="courses[course]" (change)="initDisplayTimetable()">
+    {{course}}
+  </label>
+</div>
 <table *ngIf="displayTimetable">
   <thead>
     <tr>

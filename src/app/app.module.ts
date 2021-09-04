@@ -14,6 +14,7 @@ import { WeekPipe } from './week.pipe';
 import { HelpComponent } from './help/help.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CommentsComponent } from './comments/comments.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CommentsComponent } from './comments/comments.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
