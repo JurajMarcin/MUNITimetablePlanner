@@ -86,3 +86,16 @@ export const getTime = (str: string): Date => {
 export const getRandomInt = (min: number, max: number): number => {
   return Math.floor(Math.random() * Math.floor(max - min + 1)) + min;
 };
+
+export const lessonSort = (lesson1: Lesson, lesson2: Lesson) => {
+  if (lesson1.priority != lesson2.priority) {
+    return lesson1.priority - lesson2.priority;
+  }
+  if (lesson1.name < lesson2.name) {
+    return -1;
+  }
+  if (lesson1.name > lesson2.name) {
+    return 1;
+  }
+  return 0;
+}

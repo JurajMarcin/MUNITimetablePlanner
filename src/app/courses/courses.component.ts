@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { Lesson, Timetable } from '../data';
+import { Lesson, lessonSort, Timetable } from '../data';
 import { ShowService } from '../show.service';
 
 @Component({
@@ -15,7 +15,9 @@ export class CoursesComponent implements OnInit {
   timetable: Timetable;
   courses: { [name: string]: Lesson[] } = null;
 
-  keys = Object.keys;
+  public get coursesKeys() : string[] {
+    return Object.keys(this.courses).sort();
+  }
 
   constructor(private api: ApiService, private show: ShowService) { }
 
@@ -32,12 +34,14 @@ export class CoursesComponent implements OnInit {
 
   initCourses() {
     this.timetable = this.api.getTimetable();
-    this.initDisplayCourses();
+    if (this.timetable) {
+      this.initDisplayCourses();
+    }
   }
 
   initDisplayCourses() {
     this.courses = {};
-    this.timetable.lessons.sort((a, b) => a.priority - b.priority).forEach(lesson => {
+    this.timetable.lessons.sort(lessonSort).forEach(lesson => {
       if (!lesson.hidden || this.showAll) {
         if (!this.courses[lesson.course]) {
           this.courses[lesson.course] = [];

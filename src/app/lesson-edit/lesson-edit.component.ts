@@ -26,7 +26,7 @@ export class LessonEditComponent implements OnInit {
 
   setPriority(value: number) {
     if (value > 0 && value < 17) {
-      this.lesson.priority = value;
+      this.lesson.priority = +value;
       this.api.changed.emit();
     } else {
       alert('Priority has to be between 1 and 16');
@@ -35,9 +35,10 @@ export class LessonEditComponent implements OnInit {
   }
 
   changePriority(value: number) {
-    const newPriority = this.lesson.priority + value;
+    const newPriority = this.lesson.priority + +value;
     if (newPriority > 0 && newPriority < 17) {
       this.lesson.priority = newPriority;
+      this.priority = newPriority;
       this.api.changed.emit();
     }
   }

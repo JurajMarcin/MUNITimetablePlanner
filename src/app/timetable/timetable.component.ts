@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DisplayTimetable, Timetable, Lesson, DisplayLine, getSpan, DisplayDay } from '../data';
+import { DisplayTimetable, Timetable, Lesson, DisplayLine, getSpan, DisplayDay, lessonSort } from '../data';
 import { ApiService } from '../api.service';
 import { Router } from '@angular/router';
 import { ShowService } from '../show.service';
@@ -18,7 +18,7 @@ export class TimetableComponent implements OnInit {
   timetable: Timetable;
   public courses: { [course: string]: boolean } = {};
   public get coursesKeys() : string[] {
-    return Object.keys(this.courses);
+    return Object.keys(this.courses).sort();
   }
 
   dayNames = ['PO', 'UT', 'ST', 'ŠT', 'PI', 'SO', 'NE'];
@@ -38,10 +38,12 @@ export class TimetableComponent implements OnInit {
 
   initTimetable() {
     this.timetable = this.api.getTimetable();
-    new Set(this.timetable.lessons.map(lesson => lesson.course)).forEach(course => {
-      this.courses[course] = true;
-    })
-    this.initDisplayTimetable();
+    if (this.timetable) {
+      new Set(this.timetable.lessons.map(lesson => lesson.course)).forEach(course => {
+        this.courses[course] = true;
+      })
+      this.initDisplayTimetable();
+    }
   }
 
   initDisplayTimetable() {
@@ -49,7 +51,7 @@ export class TimetableComponent implements OnInit {
     if (!this.timetable) { return; }
     this.clearDisplayTimetable(this.timetable.hours.length);
     this.displayTimetable.hours = this.timetable.hours;
-    this.timetable.lessons.sort((a, b) => a.priority - b.priority).forEach(lesson => {
+    this.timetable.lessons.sort(lessonSort).forEach(lesson => {
       if (lesson.hidden && !this.showHidden || !this.courses[lesson.course]) { return; }
       const day = lesson.time.day;
       let inserted = false;
