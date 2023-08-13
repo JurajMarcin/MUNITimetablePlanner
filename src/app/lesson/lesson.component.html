@@ -1,7 +1,7 @@
 <span class="id">
   <a href="https://is.muni.cz/auth/predmet/{{lesson.faculty}}/{{lesson.term}}/{{lesson.course}}" target="_blank">{{lesson.id}}</a>
   <sup>
-    <a *ngFor="let commentId of lesson.commentIds" class="commentId" [routerLink]="" [fragment]="'comment' + commentId">{{commentId}}</a>
+    <a *ngFor="let commentId of lesson.commentIds" class="commentId" [routerLink]="[]" [fragment]="'comment' + commentId">{{commentId}}</a>
   </sup>
 </span>
 <span class="name">{{lesson.name}}</span>
