@@ -58,6 +58,7 @@ nav a.nav-item.active li:after {
 
 .container {
   margin: 75px 15px;
+  min-height: 80vh;
 }
 
 nav a,
@@ -79,4 +80,8 @@ nav a:active {
   position: fixed;
   bottom: 5px;
   right: 5px;
+}
+
+footer {
+  margin: 15px;
 }
