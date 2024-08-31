@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -16,27 +16,20 @@ import { CoursesComponent } from './courses/courses.component';
 import { CommentsComponent } from './comments/comments.component';
 import { FormsModule } from '@angular/forms';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    ShortTimePipe,
-    RoomsPipe,
-    LessonComponent,
-    LessonEditComponent,
-    TimetableComponent,
-    WeekPipe,
-    HelpComponent,
-    CoursesComponent,
-    CommentsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    RouterModule,
-    FormsModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        ShortTimePipe,
+        RoomsPipe,
+        LessonComponent,
+        LessonEditComponent,
+        TimetableComponent,
+        WeekPipe,
+        HelpComponent,
+        CoursesComponent,
+        CommentsComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        RouterModule,
+        FormsModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
