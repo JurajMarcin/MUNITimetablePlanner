@@ -74,18 +74,22 @@ export class TimetableComponent implements OnInit {
     const start = lesson.time.from.getUTCHours() - offset;
     const span = getSpan(lesson);
     let i = 0;
-    while (line.slots[i].start < start) { i++; }
-    let spanToDelete = -1;
-    if (line.slots[i].start === start && line.slots[i].lesson === null) {
-      line.slots[i].lesson = lesson;
-      line.slots[i].span = span;
-      spanToDelete = span - 1;
-      if (spanToDelete > 0) {
-        line.slots.splice(i + 1, spanToDelete);
-      }
-      return true;
+    while (line.slots[i] && line.slots[i].start < start) { i++; }
+    if (!line.slots[i] || line.slots[i].start !== start) {
+      return false;
     }
-    return false;
+    for (let spanOffset = 0; spanOffset < span; spanOffset++) {
+      if (line.slots[i + spanOffset].lesson != null) {
+        return false;
+      }
+    }
+    line.slots[i].lesson = lesson;
+    line.slots[i].span = span;
+    const spanToDelete = span - 1;
+    if (spanToDelete > 0) {
+      line.slots.splice(i + 1, spanToDelete);
+    }
+    return true;
   }
 
   clearDisplayTimetable(hoursADay = 12) {
