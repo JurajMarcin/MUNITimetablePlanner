@@ -1,8 +1,8 @@
-@import '../../colors.scss';
+@use '../../colors.scss';
 
 :host {
   opacity: 0;
-  transition: opacity $transition;
+  transition: opacity colors.$transition;
   position: absolute;
   padding: 5px;
   top: 0;
@@ -18,7 +18,7 @@
 
 :host:hover, :host.visible, :host:focus-within {
   opacity: 1;
-  transition: opacity $transition;
+  transition: opacity colors.$transition;
 }
 
 .priority {
@@ -34,7 +34,7 @@
 .priority:focus {
   display: inline;
   outline: none;
-  text-shadow: 0 0 5px $secondary;
+  text-shadow: 0 0 5px colors.$secondary;
 }
 
 .priority-edit {

@@ -4,7 +4,8 @@ import { Timetable } from '../data';
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
-  styleUrls: ['./comments.component.scss']
+  styleUrls: ['./comments.component.scss'],
+  standalone: false
 })
 export class CommentsComponent implements OnInit {
 

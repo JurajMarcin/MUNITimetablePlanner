@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DisplayTimetable, Timetable, Lesson, DisplayLine, getSpan, DisplayDay, lessonSort } from '../data';
 import { ApiService } from '../api.service';
-import { Router } from '@angular/router';
 import { ShowService } from '../show.service';
 
 @Component({
   selector: 'app-timetable',
   templateUrl: './timetable.component.html',
-  styleUrls: ['./timetable.component.scss']
+  styleUrls: ['./timetable.component.scss'],
+  standalone: false
 })
 export class TimetableComponent implements OnInit {
 

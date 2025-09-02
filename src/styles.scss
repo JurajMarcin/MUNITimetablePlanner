@@ -1,4 +1,4 @@
-@import './colors.scss';
+@use 'colors.scss';
 
 html,
 body {
@@ -20,7 +20,7 @@ body {
 
 .icon-btn:hover {
   opacity: 0.5;
-  transition: opacity $transition;
+  transition: opacity colors.$transition;
 }
 
 .form-input {
@@ -36,30 +36,30 @@ button, .file-input, input[type='file']::-webkit-file-upload-button {
   height: 30px;
   display: block;
   border: none;
-  background-color: $secondary;
-  color: $secondary-text;
+  background-color: colors.$secondary;
+  color: colors.$secondary-text;
   font-size: 16px;
   font-family: inherit;
   padding: 5px 10px;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color $transition;
+  transition: background-color colors.$transition;
 }
 
 button:hover, .file-input:hover, input[type='file']::-webkit-file-upload-button:hover {
-  background-color: $secondary-light;
+  background-color: colors.$secondary-light;
   outline: none;
-  transition: background-color $transition;
+  transition: background-color colors.$transition;
 }
 
 button:active, input[type='file']::-webkit-file-upload-button:active {
-  background-color: $secondary-dark;
-  transition: background-color $transition;
+  background-color: colors.$secondary-dark;
+  transition: background-color colors.$transition;
 }
 
 button:disabled {
   background-color: #616161;
-  transition: background-color $transition;
+  transition: background-color colors.$transition;
 }
 
 .checkbox {
@@ -87,111 +87,111 @@ button:disabled {
   left: 0;
   height: 30px;
   width: 30px;
-  background-color: $secondary-text;
-  transition: background-color $transition;
-  border: 2px solid $secondary;
+  background-color: colors.$secondary-text;
+  transition: background-color colors.$transition;
+  border: 2px solid colors.$secondary;
   border-radius: 5px;
 }
 
 .checkbox input:checked ~ .checkmark {
-  background-color: $secondary;
+  background-color: colors.$secondary;
 }
 
 .checkbox .checkmark i {
-  color: $secondary-text;
+  color: colors.$secondary-text;
   opacity: 0;
-  transition: opacity $transition;
+  transition: opacity colors.$transition;
 }
 
 .checkbox input:checked ~ .checkmark i {
   opacity: 1;
-  transition: opacity $transition;
+  transition: opacity colors.$transition;
 }
 
 /* SEMINAR PRIORITIES */
 
 .lecture {
-  background-color: $priority-lecture;
+  background-color: colors.$priority-lecture;
 }
 
 .seminar.priority-1 {
-  background-color: $priority-1;
-  color: $priority-1-bg;
+  background-color: colors.$priority-1;
+  color: colors.$priority-1-bg;
 }
 
 .seminar.priority-2 {
-  background-color: $priority-2;
-  color: $priority-2-bg;
+  background-color: colors.$priority-2;
+  color: colors.$priority-2-bg;
 }
 
 .seminar.priority-3 {
-  background-color: $priority-3;
-  color: $priority-3-bg;
+  background-color: colors.$priority-3;
+  color: colors.$priority-3-bg;
 }
 
 .seminar.priority-4 {
-  background-color: $priority-4;
-  color: $priority-4-bg;
+  background-color: colors.$priority-4;
+  color: colors.$priority-4-bg;
 }
 
 .seminar.priority-5 {
-  background-color: $priority-5;
-  color: $priority-5-bg;
+  background-color: colors.$priority-5;
+  color: colors.$priority-5-bg;
 }
 
 .seminar.priority-6 {
-  background-color: $priority-6;
-  color: $priority-6-bg;
+  background-color: colors.$priority-6;
+  color: colors.$priority-6-bg;
 }
 
 .seminar.priority-7 {
-  background-color: $priority-7;
-  color: $priority-7-bg;
+  background-color: colors.$priority-7;
+  color: colors.$priority-7-bg;
 }
 
 .seminar.priority-8 {
-  background-color: $priority-8;
-  color: $priority-8-bg;
+  background-color: colors.$priority-8;
+  color: colors.$priority-8-bg;
 }
 
 .seminar.priority-9 {
-  background-color: $priority-9;
-  color: $priority-9-bg;
+  background-color: colors.$priority-9;
+  color: colors.$priority-9-bg;
 }
 
 .seminar.priority-10 {
-  background-color: $priority-10;
-  color: $priority-10-bg;
+  background-color: colors.$priority-10;
+  color: colors.$priority-10-bg;
 }
 
 .seminar.priority-11 {
-  background-color: $priority-11;
-  color: $priority-11-bg;
+  background-color: colors.$priority-11;
+  color: colors.$priority-11-bg;
 }
 
 .seminar.priority-12 {
-  background-color: $priority-12;
-  color: $priority-12-bg;
+  background-color: colors.$priority-12;
+  color: colors.$priority-12-bg;
 }
 
 .seminar.priority-13 {
-  background-color: $priority-13;
-  color: $priority-13-bg;
+  background-color: colors.$priority-13;
+  color: colors.$priority-13-bg;
 }
 
 .seminar.priority-14 {
-  background-color: $priority-14;
-  color: $priority-14-bg;
+  background-color: colors.$priority-14;
+  color: colors.$priority-14-bg;
 }
 
 .seminar.priority-15 {
-  background-color: $priority-15;
-  color: $priority-15-bg;
+  background-color: colors.$priority-15;
+  color: colors.$priority-15-bg;
 }
 
 .seminar.priority-16 {
-  background-color: $priority-16;
-  color: $priority-16-bg;
+  background-color: colors.$priority-16;
+  color: colors.$priority-16-bg;
 }
 
 .seminar.hidden {

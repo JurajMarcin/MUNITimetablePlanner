@@ -4,7 +4,8 @@ import { Lesson } from '../data';
 @Component({
   selector: 'app-lesson',
   templateUrl: './lesson.component.html',
-  styleUrls: ['./lesson.component.scss']
+  styleUrls: ['./lesson.component.scss'],
+  standalone: false
 })
 export class LessonComponent {
 

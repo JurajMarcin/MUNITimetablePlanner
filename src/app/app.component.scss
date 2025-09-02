@@ -1,9 +1,9 @@
-@import '../colors.scss';
+@use '../colors.scss';
 
 nav {
   height: 50px;
-  background-color: $primary;
-  color: $primary-text;
+  background-color: colors.$primary;
+  color: colors.$primary-text;
   padding: 0 15px;
   position: fixed;
   top: 0;
@@ -45,15 +45,15 @@ nav a.nav-item li:after {
   left: 0;
   height: 2px;
   width: 0;
-  background-color: $primary-text;
-  transition: width $transition;
+  background-color: colors.$primary-text;
+  transition: width colors.$transition;
 }
 
 nav a.nav-item:hover li:after,
 nav a.nav-item:active li:after,
 nav a.nav-item.active li:after {
   width: 100%;
-  transition: width $transition;
+  transition: width colors.$transition;
 }
 
 .container {

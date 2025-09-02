@@ -5,7 +5,8 @@ import { Lesson } from '../data';
 @Component({
   selector: 'app-lesson-edit',
   templateUrl: './lesson-edit.component.html',
-  styleUrls: ['./lesson-edit.component.scss']
+  styleUrls: ['./lesson-edit.component.scss'],
+  standalone: false
 })
 export class LessonEditComponent implements OnInit {
 
